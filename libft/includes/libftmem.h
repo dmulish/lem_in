@@ -1,30 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   libftmem.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmulish <dmulish@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/25 19:45:27 by dmulish           #+#    #+#             */
-/*   Updated: 2017/10/16 19:40:36 by dmulish          ###   ########.fr       */
+/*   Updated: 2017/10/16 19:35:37 by dmulish          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef _LIBFT_H
-# define _LIBFT_H
-# define BUFF_SIZE 32
-# define ABS(v) ((v) < 0 ? -(v) : (v))
+#ifndef _LIBFTMEM_H
+# define _LIBFTMEM_H
 
-# include <stdlib.h>
-# include <string.h>
-# include <unistd.h>
-# include <sys/uio.h>
-# include <sys/types.h>
-# include "includes/libftstr.h"
-# include "includes/libftlst.h"
-# include "includes/libftput.h"
-# include "includes/libftmem.h"
-# include "includes/libftconvert.h"
-# include "hash_map/hash_map.h"
+int					ft_memcmp(const void *s1, const void *s2, size_t n);
+void				ft_memdel(void **ap);
+void				ft_bzero(void *s, size_t n);
+void				*ft_memalloc(size_t size);
+void				*ft_memset(void *b, int c, size_t len);
+void				*ft_memchr(const void *s, int c, size_t n);
+void				*ft_memcpy(void *dst, const void *src, size_t n);
+void				*ft_memmove(void *dst, const void *src, size_t len);
+void				*ft_memccpy(void *dst, const void *src, int c, size_t n);
 
 #endif

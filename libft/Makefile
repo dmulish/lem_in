@@ -6,7 +6,7 @@
 #    By: dmulish <dmulish@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/12/02 19:05:10 by dmulish           #+#    #+#              #
-#    Updated: 2017/07/24 00:05:05 by dmulish          ###   ########.fr        #
+#    Updated: 2017/10/16 19:53:47 by dmulish          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -83,6 +83,8 @@ SRCS = ft_atoi.c		\
 	   ft_putendl_fd.c	\
 	   get_next_line.c	\
 	   ft_strtrim_any.c	\
+	   hash_map/hash_map.c	\
+	   hash_map/resize_hash_map.c	\
 
 BINS = $(SRCS:.c=.o)
 

@@ -6,7 +6,7 @@
 /*   By: dmulish <dmulish@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/12 16:57:18 by dmulish           #+#    #+#             */
-/*   Updated: 2017/10/16 14:05:05 by dmulish          ###   ########.fr       */
+/*   Updated: 2017/10/16 20:38:01 by dmulish          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 
 typedef struct		s_room
 {
-	struct s_room	*next;
 	char			*name;
 	int				x;
 	int				y;
@@ -37,6 +36,8 @@ typedef struct		s_map
 typedef struct		s_s
 {
 	t_map			map;
+	t_hash			*all_hash;
+	t_hash			*connect;
 	char			*buf;
 }					t_s;
 

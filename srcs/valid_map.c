@@ -6,7 +6,7 @@
 /*   By: dmulish <dmulish@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/13 15:48:15 by dmulish           #+#    #+#             */
-/*   Updated: 2017/10/16 14:06:48 by dmulish          ###   ########.fr       */
+/*   Updated: 2017/10/16 20:38:13 by dmulish          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,6 @@ int		check_ants(t_s *s)
 void	valid_map(t_s *s)
 {
 	s->map.ant = check_ants(s);
+	s->all_hash = new_hash_map(0);
 	check_rooms(s);
 }

@@ -1,22 +1,50 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   valid_map.c                                        :+:      :+:    :+:   */
+/*   check_links.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmulish <dmulish@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/13 15:48:15 by dmulish           #+#    #+#             */
-/*   Updated: 2017/10/17 19:36:20 by dmulish          ###   ########.fr       */
+/*   Created: 2017/10/17 19:24:23 by dmulish           #+#    #+#             */
+/*   Updated: 2017/10/17 21:23:33 by dmulish          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lemin.h"
 
-int		check_ants(t_s *s)
+char	**valid_links(char *str)
 {
-	int	res;
+	int		i;
+	size_t	sum;
+	char	**arr;
 
-	res = 0;
+	i = -1;
+	sum = 0;
+	arr = ft_strsplit(str, '-');
+	while (arr[++i])
+		sum += ft_strlen(arr[i]);
+	if (i != 2 || (sum + 1 != ft_strlen(str)))
+		error_manag();
+	return (arr);
+}
+
+void	put_links_in_hash(t_s *s, char **arr)
+{
+	t_list	*tmp;
+
+	if ((get_elem(s->all_rooms, arr[0]) == NULL) ||
+		(get_elem(s->all_rooms, arr[1]) == NULL))
+		error_manag();
+	// ?
+	tmp = ft_lstnew((void*)&arr[1], ft_strlen(arr[1]) + 1);
+	ft_lstadd(&tmp, get_elem(s->links, arr[0]));
+	add_elem(s->links, arr[0], (void*)tmp, sizeof(t_list*));
+}
+
+void	check_links(t_s *s)
+{
+	char	**arr;
+
 	while (get_next_line(0, &(s->buf)) > 0)
 	{
 		ft_lstadd(&s->map.file, ft_lstnew((void*)s->buf, ft_strlen(s->buf)));
@@ -27,22 +55,7 @@ int		check_ants(t_s *s)
 			ft_memdel((void**)&s->buf);
 			continue ;
 		}
-		res = ft_atoi(s->buf);
-		if (!res || (ft_digitnum(res) != (int)ft_strlen(s->buf)))
-			error_manag();
-		ft_memdel((void**)&s->buf);
-		return (res);
+		arr = valid_links(s->buf);
+		put_links_in_hash(s, arr);
 	}
-	error_manag();
-	return (0);
-}
-
-void	valid_map(t_s *s)
-{
-	s->map.ant = check_ants(s);
-	s->all_rooms = new_hash_map(0);
-	check_rooms(s);
-	(s->start_fl != 1 || s->end_fl != 1) ? error_manag() : 0;
-	s->links = new_hash_map(0);
-	check_links(s);
 }

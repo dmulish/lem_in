@@ -6,7 +6,7 @@
 /*   By: dmulish <dmulish@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/12 16:57:18 by dmulish           #+#    #+#             */
-/*   Updated: 2017/10/16 20:38:01 by dmulish          ###   ########.fr       */
+/*   Updated: 2017/10/17 19:35:03 by dmulish          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,16 @@ typedef struct		s_map
 typedef struct		s_s
 {
 	t_map			map;
-	t_hash			*all_hash;
-	t_hash			*connect;
+	t_hash			*all_rooms;
+	t_hash			*links;
 	char			*buf;
+	int				end_fl;
+	int				start_fl;
 }					t_s;
 
-void				valid_map(t_s *s);
 void				error_manag(void);
+void				valid_map(t_s *s);
+void				check_links(t_s *s);
 void				check_rooms(t_s *s);
 
 #endif

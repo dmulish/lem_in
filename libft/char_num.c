@@ -1,36 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   char_num.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmulish <dmulish@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/12 16:51:05 by dmulish           #+#    #+#             */
-/*   Updated: 2017/10/17 18:34:08 by dmulish          ###   ########.fr       */
+/*   Created: 2017/10/17 16:46:49 by dmulish           #+#    #+#             */
+/*   Updated: 2017/10/17 16:50:31 by dmulish          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lemin.h"
+#include "libft.h"
 
-void	error_manag(void)
+size_t	char_num(char *str, char c)
 {
-	ft_putstr("ERROR");
-	exit(0);
-}
+	int		i;
+	size_t	res;
 
-void	init_str(t_s *s)
-{
-	s->buf = 0;
-	s->end_fl = 0;
-	s->start_fl = 0;
-	s->map.file = NULL;
-}
-
-int		main(void)
-{
-	t_s	s;
-
-	init_str(&s);
-	valid_map(&s);
-	return (0);
+	i = -1;
+	res = 0;
+	if (!ft_strlen(str))
+		return (0);
+	while (str[++i])
+	{
+		if (str[i] == c)
+			res++;
+	}
+	return (res);
 }

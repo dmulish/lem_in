@@ -6,7 +6,7 @@
 #    By: dmulish <dmulish@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/12/02 19:05:10 by dmulish           #+#    #+#              #
-#    Updated: 2017/10/16 19:53:47 by dmulish          ###   ########.fr        #
+#    Updated: 2017/10/18 16:47:26 by dmulish          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,6 +42,7 @@ SRCS = ft_atoi.c		\
 	   ft_strnew.c		\
 	   ft_strstr.c		\
 	   ft_strsub.c		\
+	   ft_charnum.c		\
 	   ft_isalnum.c		\
 	   ft_isalpha.c		\
 	   ft_isascii.c		\
@@ -69,6 +70,7 @@ SRCS = ft_atoi.c		\
 	   ft_wordnum.c		\
 	   ft_wstrlen.c		\
 	   ft_digitnum.c	\
+	   ft_free_arr.c	\
 	   ft_memalloc.c	\
 	   ft_putwchar.c	\
 	   ft_striteri.c	\

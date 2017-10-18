@@ -6,7 +6,7 @@
 /*   By: dmulish <dmulish@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/17 19:47:39 by dmulish           #+#    #+#             */
-/*   Updated: 2017/10/10 21:24:29 by dmulish          ###   ########.fr       */
+/*   Updated: 2017/10/18 15:30:41 by dmulish          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int		get_next_line(const int fd, char **line)
 	t_line			*c_file;
 	static t_line	*c_fd;
 
-	if (!line || fd < 0 || (ret = read(fd, NULL, 0)) < 0)
+	if (fd < 0 || (ret = read(fd, NULL, 0)) < 0)
 		return (-1);
 	if (!c_fd)
 	{

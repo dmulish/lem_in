@@ -6,7 +6,7 @@
 /*   By: dmulish <dmulish@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/16 14:13:34 by dmulish           #+#    #+#             */
-/*   Updated: 2017/10/16 19:54:09 by dmulish          ###   ########.fr       */
+/*   Updated: 2017/10/18 19:41:43 by dmulish          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef struct	s_hash
 {
 	size_t		bucket_num;
 	size_t		filled;
+	t_list		*all_index;
 	t_list		**map;
 }				t_hash;
 

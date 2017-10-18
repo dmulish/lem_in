@@ -6,7 +6,7 @@
 #    By: dmulish <dmulish@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/10/12 16:58:59 by dmulish           #+#    #+#              #
-#    Updated: 2017/10/17 16:31:41 by dmulish          ###   ########.fr        #
+#    Updated: 2017/10/18 20:27:02 by dmulish          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,16 +16,17 @@ FLAGS = -Wall -Wextra -Werror -I includes/ -g
 
 LIB = libft/libft.a
 
-SRCS = srcs/main.c	\
+SRCS = srcs/main.c			\
+	   srcs/valid_map.c		\
+	   srcs/check_links.c	\
+	   srcs/check_rooms.c	\
 
 BINS = $(SRCS:.c=.o)
 
 all: $(NAME)
 
-$(LIB):
+$(NAME): $(BINS)
 	make -j4 -C libft/
-
-$(NAME): $(BINS) $(LIB)
 	gcc -o $(NAME) $(FLAGS) $(BINS) $(LIB)
 
 %.o: %.c

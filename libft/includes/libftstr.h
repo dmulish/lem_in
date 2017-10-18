@@ -6,7 +6,7 @@
 /*   By: dmulish <dmulish@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/25 19:45:27 by dmulish           #+#    #+#             */
-/*   Updated: 2017/10/17 18:17:07 by dmulish          ###   ########.fr       */
+/*   Updated: 2017/10/18 16:46:39 by dmulish          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ char				*ft_strsub(char const *s, unsigned int start, size_t len);
 char				**ft_strsplit(char const *s, char c);
 
 void				ft_strclr(char *s);
+void				ft_free_arr(char **arr);
 void				ft_strdel(char **as);
 void				ft_striter(char *s, void (*f)(char *));
 void				ft_striteri(char *s, void (*f)(unsigned int, char *));
@@ -55,8 +56,8 @@ void				ft_striteri(char *s, void (*f)(unsigned int, char *));
 size_t				ft_wcharlen(wchar_t s);
 size_t				ft_wstrlen(wchar_t *s);
 size_t				ft_strlen(const char *s);
-size_t				char_num(char *str, char c);
 size_t				ft_wordnum(char *s, char c);
+size_t				ft_charnum(char *str, char c);
 size_t				ft_strlcat(char *dst, const char *src, size_t size);
 
 #endif

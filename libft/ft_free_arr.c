@@ -1,30 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   char_num.c                                         :+:      :+:    :+:   */
+/*   ft_free_arr.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmulish <dmulish@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/17 16:46:49 by dmulish           #+#    #+#             */
-/*   Updated: 2017/10/17 16:50:31 by dmulish          ###   ########.fr       */
+/*   Created: 2017/10/18 14:28:58 by dmulish           #+#    #+#             */
+/*   Updated: 2017/10/18 14:30:45 by dmulish          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	char_num(char *str, char c)
+void	ft_free_arr(char **arr)
 {
-	int		i;
-	size_t	res;
+	int	i;
 
 	i = -1;
-	res = 0;
-	if (!ft_strlen(str))
-		return (0);
-	while (str[++i])
-	{
-		if (str[i] == c)
-			res++;
-	}
-	return (res);
+	if (!arr)
+		return ;
+	while (arr[++i])
+		ft_memdel((void**)&arr[i]);
+	ft_memdel((void**)&arr);
 }

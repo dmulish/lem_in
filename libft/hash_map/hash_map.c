@@ -6,7 +6,7 @@
 /*   By: dmulish <dmulish@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/16 14:15:48 by dmulish           #+#    #+#             */
-/*   Updated: 2017/10/16 19:44:16 by dmulish          ###   ########.fr       */
+/*   Updated: 2017/10/18 19:54:29 by dmulish          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ void		add_elem(t_hash *hash_map, char *key, void *data, size_t data_size)
 	if (hash_map->map[index] == NULL)
 	{
 		hash_map->map[index] = ft_lstnew((void*)&node, sizeof(t_node));
+		ft_lstadd(&(hash_map->all_index), ft_lstnew((void*)key, index));
 	}
 	else
 		ft_lstadd(&(hash_map->map[index]),
@@ -85,6 +86,7 @@ t_hash		*new_hash_map(size_t size)
 	new = (t_hash*)malloc(sizeof(t_hash));
 	new->filled = 0;
 	new->bucket_num = size;
+	new->all_index = (t_list*)ft_memalloc(sizeof(t_list));
 	new->map = (t_list**)ft_memalloc(sizeof(t_list*) * size);
 	return (new);
 }

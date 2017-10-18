@@ -6,7 +6,7 @@
 /*   By: dmulish <dmulish@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/12 18:21:20 by dmulish           #+#    #+#             */
-/*   Updated: 2017/10/13 19:26:12 by dmulish          ###   ########.fr       */
+/*   Updated: 2017/10/18 21:20:08 by dmulish          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,8 @@
 
 void	ft_lstadd(t_list **alst, t_list *new)
 {
-	if (alst)
-	{
-		new->next = *alst;
-	}
+	if (new == NULL || alst == NULL)
+		return ;
+	new->next = *alst;
 	*alst = new;
 }

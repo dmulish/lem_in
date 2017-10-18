@@ -1,38 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdel.c                                        :+:      :+:    :+:   */
+/*   ft_charnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmulish <dmulish@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/12 17:39:28 by dmulish           #+#    #+#             */
-/*   Updated: 2017/10/18 18:52:30 by dmulish          ###   ########.fr       */
+/*   Created: 2017/10/17 16:46:49 by dmulish           #+#    #+#             */
+/*   Updated: 2017/10/18 16:50:24 by dmulish          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "libft.h"
 
-void	delete_tlist_node(void *data, size_t data_size)
+size_t	ft_charnum(char *str, char c)
 {
-	(void)data_size;
-	ft_memdel(&((t_list*)data)->content);
-	ft_memdel(&data);
-}
+	int		i;
+	size_t	res;
 
-void	ft_lstdel(t_list **alst, void (*del)(void *, size_t))
-{
-	t_list	*tmp;
-	t_list	*current;
-
-	tmp = *alst;
-	current = *alst;
-	while (tmp)
+	i = -1;
+	res = 0;
+	if (!ft_strlen(str))
+		return (0);
+	while (str[++i])
 	{
-		current = tmp;
-		tmp = tmp->next;
-		del(current->content, current->content_size);
-		free(current);
+		if (str[i] == c)
+			res++;
 	}
-	*alst = NULL;
+	return (res);
 }

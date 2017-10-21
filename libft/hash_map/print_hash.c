@@ -6,7 +6,7 @@
 /*   By: dmulish <dmulish@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/21 16:15:13 by dmulish           #+#    #+#             */
-/*   Updated: 2017/10/21 16:18:03 by dmulish          ###   ########.fr       */
+/*   Updated: 2017/10/21 18:33:06 by dmulish          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	print_node(t_list *node)
 {
-	ft_putstr((char*)(((t_node*)(node->content))->key));
+	ft_putstr(((t_node*)(node->content))->key);
 	ft_putstr(" => ");
 	ft_putstr((char*)(((t_node*)(node->content))->data));
 	ft_putstr("; ");

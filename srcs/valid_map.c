@@ -6,7 +6,7 @@
 /*   By: dmulish <dmulish@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/13 15:48:15 by dmulish           #+#    #+#             */
-/*   Updated: 2017/10/21 17:42:51 by dmulish          ###   ########.fr       */
+/*   Updated: 2017/10/21 19:39:44 by dmulish          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,33 @@ int			check_ants(t_s *s)
 	return (0);
 }
 
-// void		check_same_coord(t_s *s)
-// {
-//
-// }
+void		check_same_coord_elem(t_s *s, t_list *tmp, int index1)
+{
+	int		index2;
+
+	(void)s;
+	index2 = ft_atoi((char*)tmp->content);
+}
+
+void		check_same_coord(t_s *s)
+{
+	int		index1;
+	t_list	*cpy;
+	t_list	*tmp;
+
+	cpy = s->all_rooms->all_index;
+	while (cpy)
+	{
+		tmp = cpy->next;
+		index1 = ft_atoi((char*)cpy->content);
+		while (tmp)
+		{
+			check_same_coord_elem(s, tmp, index1);
+			tmp = tmp->next;
+		}
+		cpy = cpy->next;
+	}
+}
 
 void		valid_map(t_s *s)
 {
@@ -62,5 +85,5 @@ void		valid_map(t_s *s)
 	(s->start_fl != 1 || s->end_fl != 1) ? error_manag() : 0;
 	s->links = new_hash_map(0);
 	check_links(s);
-	// check_same_coord(s);
+	check_same_coord(s);
 }

@@ -6,7 +6,7 @@
 /*   By: dmulish <dmulish@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/13 19:37:42 by dmulish           #+#    #+#             */
-/*   Updated: 2017/10/20 19:51:56 by dmulish          ###   ########.fr       */
+/*   Updated: 2017/10/21 18:29:53 by dmulish          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,9 @@ void	new_room(t_s *s, int start, int end, char *tmp)
 	valid_room(arr, s->buf);
 	new_room = (t_room*)malloc(sizeof(t_room));
 	fill_room(s, new_room, arr);
-	(get_elem(s->all_rooms, arr[0]) == NULL) ? add_elem(s->all_rooms, arr[0],
-		(void*)&new_room, sizeof(t_room)) : error_manag();
+	if (get_elem(s->all_rooms, arr[0]))
+		error_manag();
+	add_elem(s->all_rooms, arr[0], (void*)&new_room, sizeof(t_room));
 	ft_memdel((void**)&(new_room->name));
 	ft_memdel((void**)&new_room);
 	if (start == 1 && s->start_fl == 0)

@@ -6,7 +6,7 @@
 /*   By: dmulish <dmulish@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/16 14:13:34 by dmulish           #+#    #+#             */
-/*   Updated: 2017/10/18 19:41:43 by dmulish          ###   ########.fr       */
+/*   Updated: 2017/10/21 16:15:51 by dmulish          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,12 @@ typedef struct	s_hash
 	t_list		**map;
 }				t_hash;
 
-t_hash			*new_hash_map(size_t size);
+void			print_hash(t_hash *map);
 void			resize_hash_map(t_hash *h);
 void			*get_elem(t_hash *hash_map, char *key);
 void			add_elem(t_hash *hash_map, char *key, void *data,
 						size_t data_size);
+
+t_hash			*new_hash_map(size_t size);
 
 #endif

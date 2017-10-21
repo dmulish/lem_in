@@ -6,7 +6,7 @@
 /*   By: dmulish <dmulish@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/16 14:15:48 by dmulish           #+#    #+#             */
-/*   Updated: 2017/10/18 19:54:29 by dmulish          ###   ########.fr       */
+/*   Updated: 2017/10/21 17:33:50 by dmulish          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ t_node		new_node(char *key, void *data, size_t data_size)
 void		add_elem(t_hash *hash_map, char *key, void *data, size_t data_size)
 {
 	int		index;
+	char	*ind_str;
 	t_node	node;
 
 	if (!ft_strlen(key) || data == NULL || data_size == 0)
@@ -45,16 +46,22 @@ void		add_elem(t_hash *hash_map, char *key, void *data, size_t data_size)
 	if ((double)hash_map->filled / (double)hash_map->bucket_num > 0.7)
 		resize_hash_map(hash_map);
 	index = hash(hash_map, key);
+	ind_str = ft_itoa(index);
 	node = new_node(key, data, data_size);
 	if (hash_map->map[index] == NULL)
 	{
 		hash_map->map[index] = ft_lstnew((void*)&node, sizeof(t_node));
-		ft_lstadd(&(hash_map->all_index), ft_lstnew((void*)key, index));
+		if (hash_map->all_index == NULL)
+			hash_map->all_index = ft_lstnew((void*)ind_str, ft_strlen(ind_str));
+		else
+			ft_lstadd(&(hash_map->all_index), ft_lstnew((void*)ind_str,
+			ft_strlen(ind_str)));
 	}
 	else
 		ft_lstadd(&(hash_map->map[index]),
 			ft_lstnew((void*)&node, sizeof(t_node)));
 	hash_map->filled++;
+	ft_memdel((void**)&ind_str);
 }
 
 void		*get_elem(t_hash *hash_map, char *key)
@@ -85,8 +92,8 @@ t_hash		*new_hash_map(size_t size)
 		size = 128;
 	new = (t_hash*)malloc(sizeof(t_hash));
 	new->filled = 0;
+	new->all_index = NULL;
 	new->bucket_num = size;
-	new->all_index = (t_list*)ft_memalloc(sizeof(t_list));
 	new->map = (t_list**)ft_memalloc(sizeof(t_list*) * size);
 	return (new);
 }

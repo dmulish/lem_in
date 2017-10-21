@@ -6,7 +6,7 @@
 /*   By: dmulish <dmulish@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/25 19:45:27 by dmulish           #+#    #+#             */
-/*   Updated: 2017/10/18 18:52:28 by dmulish          ###   ########.fr       */
+/*   Updated: 2017/10/21 18:21:22 by dmulish          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ typedef struct		s_list
 	size_t			content_size;
 }					t_list;
 
+void				print_list(t_list *lst);
+void				print_rev_list(t_list *lst);
 void				ft_lstadd(t_list **alst, t_list *new);
 void				delete_tlist_node(void *data, size_t data_size);
 void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));

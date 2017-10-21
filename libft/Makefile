@@ -6,7 +6,7 @@
 #    By: dmulish <dmulish@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/12/02 19:05:10 by dmulish           #+#    #+#              #
-#    Updated: 2017/10/18 16:47:26 by dmulish          ###   ########.fr        #
+#    Updated: 2017/10/21 18:22:34 by dmulish          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -69,6 +69,7 @@ SRCS = ft_atoi.c		\
 	   ft_toupper.c		\
 	   ft_wordnum.c		\
 	   ft_wstrlen.c		\
+	   print_list.c		\
 	   ft_digitnum.c	\
 	   ft_free_arr.c	\
 	   ft_memalloc.c	\
@@ -86,6 +87,7 @@ SRCS = ft_atoi.c		\
 	   get_next_line.c	\
 	   ft_strtrim_any.c	\
 	   hash_map/hash_map.c	\
+	   hash_map/print_hash.c	\
 	   hash_map/resize_hash_map.c	\
 
 BINS = $(SRCS:.c=.o)

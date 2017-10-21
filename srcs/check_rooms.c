@@ -6,7 +6,7 @@
 /*   By: dmulish <dmulish@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/13 19:37:42 by dmulish           #+#    #+#             */
-/*   Updated: 2017/10/18 21:13:16 by dmulish          ###   ########.fr       */
+/*   Updated: 2017/10/20 19:51:56 by dmulish          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void	check_rooms(t_s *s)
 	{
 		(!s->buf[0]) ? error_manag() : 0;
 		tmp = ft_strdup(s->buf);
-		ft_lstadd(&s->map.file, ft_lstnew((void*)tmp, ft_strlen(s->buf)));
+		ft_lstadd(&s->map.file, ft_lstnew((void*)tmp, ft_strlen(tmp)));
 		if (s->buf[0] == '#')
 		{
 			if (!ft_strcmp(s->buf, "##start"))

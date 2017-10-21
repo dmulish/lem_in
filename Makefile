@@ -6,7 +6,7 @@
 #    By: dmulish <dmulish@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/10/12 16:58:59 by dmulish           #+#    #+#              #
-#    Updated: 2017/10/18 20:27:02 by dmulish          ###   ########.fr        #
+#    Updated: 2017/10/21 15:47:44 by dmulish          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,5 +38,6 @@ clean:
 
 fclean: clean
 	/bin/rm -f $(NAME)
+	/bin/rm -f $(LIB)
 
 re: fclean all

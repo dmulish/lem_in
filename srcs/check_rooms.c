@@ -6,7 +6,7 @@
 /*   By: dmulish <dmulish@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/13 19:37:42 by dmulish           #+#    #+#             */
-/*   Updated: 2017/10/21 18:29:53 by dmulish          ###   ########.fr       */
+/*   Updated: 2017/10/22 15:10:47 by dmulish          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	fill_room(t_s *s, t_room *new_room, char **arr)
 	new_room->y = ft_atoi(arr[2]);
 }
 
-void	new_room(t_s *s, int start, int end, char *tmp)
+void	new_room(t_s *s, int start, int end)
 {
 	char	**arr;
 	t_room	*new_room;
@@ -72,7 +72,6 @@ void	new_room(t_s *s, int start, int end, char *tmp)
 		s->map.end = new_room;
 		s->end_fl++;
 	}
-	ft_memdel((void**)&tmp);
 	ft_memdel((void**)&s->buf);
 	ft_free_arr(arr);
 }
@@ -90,6 +89,7 @@ void	check_rooms(t_s *s)
 		(!s->buf[0]) ? error_manag() : 0;
 		tmp = ft_strdup(s->buf);
 		ft_lstadd(&s->map.file, ft_lstnew((void*)tmp, ft_strlen(tmp)));
+		ft_memdel((void**)&tmp);
 		if (s->buf[0] == '#')
 		{
 			if (!ft_strcmp(s->buf, "##start"))
@@ -101,7 +101,7 @@ void	check_rooms(t_s *s)
 		}
 		if (ft_wordnum(s->buf, '-') == 2)
 			return ;
-		new_room(s, start, end, tmp);
+		new_room(s, start, end);
 	}
 	error_manag();
 }

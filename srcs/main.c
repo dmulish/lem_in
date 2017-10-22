@@ -6,7 +6,7 @@
 /*   By: dmulish <dmulish@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/12 16:51:05 by dmulish           #+#    #+#             */
-/*   Updated: 2017/10/21 18:51:36 by dmulish          ###   ########.fr       */
+/*   Updated: 2017/10/22 16:40:44 by dmulish          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,14 @@ int		main(void)
 
 	init_str(&s);
 	valid_map(&s);
-	print_hash(s.all_rooms);
-	ft_putchar('\n');
-	print_list(s.all_rooms->all_index);
-	// print_rev_list(s.map.file);
+	// print_hash(s.all_rooms);
 	// ft_putchar('\n');
-	// ft_lstdel(&(s.map.file), delete_tlist_node);
-	// dijkstra's algorithm
+	// print_list(s.all_rooms->all_index);
+	print_rev_list(s.map.file);
+	ft_putchar('\n');
+	// ft_lstdel do not work!
+	ft_lstdel(&(s.map.file), delete_tlist_node);
 	// while (1);
+	// dijkstra's algorithm
 	return (0);
 }

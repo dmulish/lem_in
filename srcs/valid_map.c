@@ -6,31 +6,30 @@
 /*   By: dmulish <dmulish@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/13 15:48:15 by dmulish           #+#    #+#             */
-/*   Updated: 2017/10/22 15:11:20 by dmulish          ###   ########.fr       */
+/*   Updated: 2017/10/23 20:49:09 by dmulish          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lemin.h"
 
-static void	ants_to_list(t_s *s, char *tmp)
+static void	ants_to_list(t_s *s)
 {
 	if (s->map.file == NULL)
-		s->map.file = ft_lstnew((void*)tmp, ft_strlen(tmp));
+		s->map.file = ft_lstnew((void*)s->buf, ft_strlen(s->buf));
 	else
-		ft_lstadd(&s->map.file, ft_lstnew((void*)tmp, ft_strlen(tmp)));
+		ft_lstadd(&s->map.file, ft_lstnew((void*)s->buf,
+		ft_strlen(s->buf) + 1));
 }
 
 int			check_ants(t_s *s)
 {
 	int		res;
-	char	*tmp;
 
 	res = 0;
 	while (get_next_line(0, &(s->buf)) > 0)
 	{
-		tmp = ft_strdup(s->buf);
 		(!s->buf[0]) ? error_manag() : 0;
-		ants_to_list(s, tmp);
+		ants_to_list(s);
 		if (s->buf[0] == '#')
 		{
 			if (!ft_strcmp(s->buf, "##start") || !ft_strcmp(s->buf, "##end"))
@@ -41,7 +40,6 @@ int			check_ants(t_s *s)
 		res = ft_atoi(s->buf);
 		if (!res || (ft_digitnum(res) != (int)ft_strlen(s->buf)))
 			error_manag();
-		ft_memdel((void**)&tmp);
 		ft_memdel((void**)&s->buf);
 		return (res);
 	}
@@ -49,40 +47,11 @@ int			check_ants(t_s *s)
 	return (0);
 }
 
-// void		check_same_coord_elem(t_s *s, t_list *tmp, int index1)
-// {
-// 	int		index2;
-//
-// 	index2 = ft_atoi((char*)tmp->content);
-// }
-//
-// void		check_same_coord(t_s *s)
-// {
-// 	int		index1;
-// 	t_list	*cpy;
-// 	t_list	*tmp;
-//
-// 	cpy = s->all_rooms->all_index;
-// 	while (cpy)
-// 	{
-// 		tmp = cpy->next;
-// 		index1 = ft_atoi((char*)cpy->content);
-// 		while (tmp)
-// 		{
-// 			check_same_coord_elem(s, tmp, index1);
-// 			tmp = tmp->next;
-// 		}
-// 		cpy = cpy->next;
-// 	}
-// }
-
 void		valid_map(t_s *s)
 {
 	s->map.ant = check_ants(s);
 	s->all_rooms = new_hash_map(0);
 	check_rooms(s);
 	(s->start_fl != 1 || s->end_fl != 1) ? error_manag() : 0;
-	s->links = new_hash_map(0);
 	check_links(s);
-	// check_same_coord(s);
 }

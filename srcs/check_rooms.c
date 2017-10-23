@@ -6,7 +6,7 @@
 /*   By: dmulish <dmulish@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/13 19:37:42 by dmulish           #+#    #+#             */
-/*   Updated: 2017/10/22 15:10:47 by dmulish          ###   ########.fr       */
+/*   Updated: 2017/10/23 20:50:13 by dmulish          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,9 @@ void	fill_room(t_s *s, t_room *new_room, char **arr)
 	new_room->name = ft_strdup(arr[0]);
 	new_room->x = ft_atoi(arr[1]);
 	new_room->y = ft_atoi(arr[2]);
+	new_room->min_dist = INF;
+	new_room->links = NULL;
+	new_room->visited = 0;
 }
 
 void	new_room(t_s *s, int start, int end)
@@ -51,8 +54,6 @@ void	new_room(t_s *s, int start, int end)
 	char	**arr;
 	t_room	*new_room;
 
-	(start > 1 || end > 1) ? error_manag() : 0;
-	(ft_charnum(s->buf, ' ') != 2) ? error_manag() : 0;
 	arr = ft_strsplit(s->buf, ' ');
 	valid_room(arr, s->buf);
 	new_room = (t_room*)malloc(sizeof(t_room));
@@ -60,11 +61,10 @@ void	new_room(t_s *s, int start, int end)
 	if (get_elem(s->all_rooms, arr[0]))
 		error_manag();
 	add_elem(s->all_rooms, arr[0], (void*)&new_room, sizeof(t_room));
-	ft_memdel((void**)&(new_room->name));
-	ft_memdel((void**)&new_room);
 	if (start == 1 && s->start_fl == 0)
 	{
 		s->map.start = new_room;
+		s->map.start->min_dist = 0.;
 		s->start_fl++;
 	}
 	else if (end == 1 && s->end_fl == 0)
@@ -72,6 +72,8 @@ void	new_room(t_s *s, int start, int end)
 		s->map.end = new_room;
 		s->end_fl++;
 	}
+	ft_memdel((void**)&(new_room->name));
+	ft_memdel((void**)&new_room);
 	ft_memdel((void**)&s->buf);
 	ft_free_arr(arr);
 }
@@ -80,16 +82,14 @@ void	check_rooms(t_s *s)
 {
 	int		end;
 	int		start;
-	char	*tmp;
 
 	end = 0;
 	start = 0;
 	while (get_next_line(0, &(s->buf)) > 0)
 	{
 		(!s->buf[0]) ? error_manag() : 0;
-		tmp = ft_strdup(s->buf);
-		ft_lstadd(&s->map.file, ft_lstnew((void*)tmp, ft_strlen(tmp)));
-		ft_memdel((void**)&tmp);
+		ft_lstadd(&s->map.file, ft_lstnew((void*)s->buf,
+		ft_strlen(s->buf) + 1));
 		if (s->buf[0] == '#')
 		{
 			if (!ft_strcmp(s->buf, "##start"))
@@ -99,8 +99,10 @@ void	check_rooms(t_s *s)
 			ft_memdel((void**)&s->buf);
 			continue ;
 		}
+		(start > 1 || end > 1) ? error_manag() : 0;
 		if (ft_wordnum(s->buf, '-') == 2)
 			return ;
+		(ft_charnum(s->buf, ' ') != 2) ? error_manag() : 0;
 		new_room(s, start, end);
 	}
 	error_manag();

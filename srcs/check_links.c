@@ -6,13 +6,13 @@
 /*   By: dmulish <dmulish@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/17 19:24:23 by dmulish           #+#    #+#             */
-/*   Updated: 2017/10/20 18:56:41 by dmulish          ###   ########.fr       */
+/*   Updated: 2017/10/23 20:50:42 by dmulish          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lemin.h"
 
-char	**valid_links(char *str)
+static char	**valid_links(char *str)
 {
 	int		i;
 	size_t	sum;
@@ -28,28 +28,35 @@ char	**valid_links(char *str)
 	return (arr);
 }
 
-void	put_links_in_hash(t_s *s, char **arr)
+static void	put_links_in_hash(t_s *s)
 {
-	if ((get_elem(s->all_rooms, arr[0]) == NULL) ||
-		(get_elem(s->all_rooms, arr[1]) == NULL))
-		error_manag();
-	add_elem(s->links, arr[0], (void*)arr[1], ft_strlen(arr[1]));
-	ft_free_arr(arr);
-}
-
-void	check_links(t_s *s)
-{
-	char	*tmp;
 	char	**arr;
+	t_room	*room1;
+	t_room	*room2;
 
 	arr = valid_links(s->buf);
-	put_links_in_hash(s, arr);
+	room1 = (t_room*)get_elem(s->all_rooms, arr[0]);
+	room2 = (t_room*)get_elem(s->all_rooms, arr[1]);
+	if (room1 == NULL || room2 == NULL)
+		error_manag();
+	if (room1->links == NULL)
+		room1->links = ft_lstnew((void*)arr[1], ft_strlen(arr[1]));
+	else
+		ft_lstadd(&(room1->links), ft_lstnew((void*)arr[1],
+		ft_strlen(arr[1]) + 1));
+	s->map.num_links++;
+	ft_free_arr(arr);
 	ft_memdel((void**)&s->buf);
+}
+
+void		check_links(t_s *s)
+{
+	put_links_in_hash(s);
 	while (get_next_line(0, &(s->buf)) > 0)
 	{
 		(!s->buf[0]) ? error_manag() : 0;
-		tmp = ft_strdup(s->buf);
-		ft_lstadd(&s->map.file, ft_lstnew((void*)tmp, ft_strlen(s->buf)));
+		ft_lstadd(&s->map.file, ft_lstnew((void*)s->buf,
+		ft_strlen(s->buf) + 1));
 		if (s->buf[0] == '#')
 		{
 			if (!ft_strcmp(s->buf, "##start") || !ft_strcmp(s->buf, "##end"))
@@ -57,9 +64,6 @@ void	check_links(t_s *s)
 			ft_memdel((void**)&s->buf);
 			continue ;
 		}
-		arr = valid_links(s->buf);
-		put_links_in_hash(s, arr);
-		ft_memdel((void**)&s->buf);
-		ft_memdel((void**)&tmp);
+		put_links_in_hash(s);
 	}
 }

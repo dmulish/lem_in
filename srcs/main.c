@@ -6,18 +6,18 @@
 /*   By: dmulish <dmulish@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/12 16:51:05 by dmulish           #+#    #+#             */
-/*   Updated: 2017/10/23 20:55:51 by dmulish          ###   ########.fr       */
+/*   Updated: 2017/10/24 21:28:24 by dmulish          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lemin.h"
 
-// some trash in the end of s.map.file's strings
-// search_way_to_end <- nedd to be improved
-// some leaks in print_list/ft_lstdel
+// some leaks in print_list/ft_lstdel /ft_lstdel do not work (?)/
 // same coord need to be checked
-// ft_lstdel do not work (?)
+// free s->map.start/s->map.end
 // free array of t_list* !
+// improve hash-function
+// if no links - break
 
 void	error_manag(void)
 {
@@ -47,6 +47,6 @@ int		main(void)
 	print_rev_list(s.map.file);
 	ft_putchar('\n');
 	ft_lstdel(&(s.map.file), delete_tlist_node);
-	// run_algorithm(&s);
+	run_algorithm(&s);
 	return (0);
 }

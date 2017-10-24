@@ -6,14 +6,14 @@
 /*   By: dmulish <dmulish@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/12 16:57:18 by dmulish           #+#    #+#             */
-/*   Updated: 2017/10/23 20:37:13 by dmulish          ###   ########.fr       */
+/*   Updated: 2017/10/24 20:31:28 by dmulish          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef _LEMIN_H
 # define _LEMIN_H
 
-# define INF 1000000000.
+# define INF 3037000500.
 
 # include "../libft/libft.h"
 # include <stdlib.h>
@@ -24,8 +24,8 @@
 typedef struct		s_room
 {
 	t_list			*links;
-	double			min_dist;
 	char			*name;
+	double			min_dist;
 	int				visited;
 	int				y;
 	int				x;
@@ -50,10 +50,11 @@ typedef struct		s_s
 	int				start_fl;
 }					t_s;
 
-void				run_algorithm(t_s *s);
 void				error_manag(void);
 void				valid_map(t_s *s);
 void				check_links(t_s *s);
 void				check_rooms(t_s *s);
+void				run_algorithm(t_s *s);
+void				dijkstra(t_s *s, t_room *neibr, t_list **arr, int j);
 
 #endif

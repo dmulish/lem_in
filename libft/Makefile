@@ -6,7 +6,7 @@
 #    By: dmulish <dmulish@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/12/02 19:05:10 by dmulish           #+#    #+#              #
-#    Updated: 2017/10/21 18:22:34 by dmulish          ###   ########.fr        #
+#    Updated: 2017/10/24 13:51:07 by dmulish          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@ FLAGS = -Wall -Wextra -Werror -g
 
 SRCS = ft_atoi.c		\
 	   ft_itoa.c		\
+	   cpy_list.c		\
 	   ft_bzero.c		\
 	   ft_lstadd.c		\
 	   ft_lstdel.c		\
@@ -82,6 +83,7 @@ SRCS = ft_atoi.c		\
 	   ft_lstdelone.c	\
 	   ft_putnbr_fd.c	\
 	   ft_putstr_fd.c	\
+	   reverse_list.c	\
 	   ft_putchar_fd.c	\
 	   ft_putendl_fd.c	\
 	   get_next_line.c	\

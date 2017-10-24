@@ -6,7 +6,7 @@
 #    By: dmulish <dmulish@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/10/12 16:58:59 by dmulish           #+#    #+#              #
-#    Updated: 2017/10/23 12:03:30 by dmulish          ###   ########.fr        #
+#    Updated: 2017/10/24 12:34:11 by dmulish          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,11 +16,12 @@ FLAGS = -Wall -Wextra -Werror -I includes/ -g
 
 LIB = libft/libft.a
 
-SRCS = srcs/main.c			\
-	   srcs/dijkstra.c		\
-	   srcs/valid_map.c		\
-	   srcs/check_links.c	\
-	   srcs/check_rooms.c	\
+SRCS = srcs/main.c				\
+	   srcs/dijkstra.c			\
+	   srcs/valid_map.c			\
+	   srcs/check_links.c		\
+	   srcs/check_rooms.c		\
+	   srcs/run_algorithm.c		\
 
 BINS = $(SRCS:.c=.o)
 

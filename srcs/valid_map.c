@@ -6,7 +6,7 @@
 /*   By: dmulish <dmulish@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/13 15:48:15 by dmulish           #+#    #+#             */
-/*   Updated: 2017/10/23 20:49:09 by dmulish          ###   ########.fr       */
+/*   Updated: 2017/10/24 21:02:47 by dmulish          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void	ants_to_list(t_s *s)
 {
 	if (s->map.file == NULL)
-		s->map.file = ft_lstnew((void*)s->buf, ft_strlen(s->buf));
+		s->map.file = ft_lstnew((void*)s->buf, ft_strlen(s->buf) + 1);
 	else
 		ft_lstadd(&s->map.file, ft_lstnew((void*)s->buf,
 		ft_strlen(s->buf) + 1));

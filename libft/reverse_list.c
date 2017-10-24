@@ -1,38 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_list.c                                       :+:      :+:    :+:   */
+/*   reverse_list.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmulish <dmulish@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/21 18:20:07 by dmulish           #+#    #+#             */
-/*   Updated: 2017/10/24 21:07:17 by dmulish          ###   ########.fr       */
+/*   Created: 2017/10/24 11:27:13 by dmulish           #+#    #+#             */
+/*   Updated: 2017/10/24 20:07:17 by dmulish          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	print_list(t_list *lst)
+t_list	*reverse_list(t_list *lst)
 {
-	t_list	*tmp;
-
-	tmp = lst;
-	while (tmp)
-	{
-		ft_putendl((char*)tmp->content);
-		tmp = tmp->next;
-	}
-}
-
-void	print_rev_list(t_list *lst)
-{
-	t_list	*tmp;
 	t_list	*prev;
 	t_list	*curr;
 	t_list	*next;
 
-	tmp = lst;
-	curr = tmp;
+	curr = lst;
 	prev = NULL;
 	while (curr)
 	{
@@ -41,6 +27,6 @@ void	print_rev_list(t_list *lst)
 		curr = curr->next;
 		prev->next = next;
 	}
-	tmp = prev;
-	print_list(tmp);
+	lst = prev;
+	return (lst);
 }

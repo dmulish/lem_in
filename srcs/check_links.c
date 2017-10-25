@@ -6,13 +6,13 @@
 /*   By: dmulish <dmulish@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/17 19:24:23 by dmulish           #+#    #+#             */
-/*   Updated: 2017/10/24 20:36:02 by dmulish          ###   ########.fr       */
+/*   Updated: 2017/10/25 11:58:43 by dmulish          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lemin.h"
 
-static char	**valid_links(char *str)
+static char	**valid_links(t_s *s, char *str)
 {
 	int		i;
 	size_t	sum;
@@ -21,6 +21,8 @@ static char	**valid_links(char *str)
 	i = -1;
 	sum = 0;
 	arr = ft_strsplit(str, '-');
+	if (!ft_strcmp(arr[1], s->map.end->name))
+		s->end_links++;
 	while (arr[++i])
 		sum += ft_strlen(arr[i]);
 	if (i != 2 || (sum + 1 != ft_strlen(str)) || !ft_strcmp(arr[0], arr[1]))
@@ -34,7 +36,7 @@ static void	put_links_in_hash(t_s *s)
 	t_room	*room1;
 	t_room	*room2;
 
-	arr = valid_links(s->buf);
+	arr = valid_links(s, s->buf);
 	room1 = (t_room*)get_elem(s->all_rooms, arr[0]);
 	room2 = (t_room*)get_elem(s->all_rooms, arr[1]);
 	if (room1 == NULL || room2 == NULL)

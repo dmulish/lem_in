@@ -6,7 +6,7 @@
 /*   By: dmulish <dmulish@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/24 12:33:02 by dmulish           #+#    #+#             */
-/*   Updated: 2017/10/24 14:42:50 by dmulish          ###   ########.fr       */
+/*   Updated: 2017/10/25 14:06:21 by dmulish          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,22 +28,34 @@ void	search_and_delete_way(t_s *s, t_room *neibr, t_list **arr, int j)
 	}
 }
 
+// here! only arr[j]->next stay; need to find all arr[j]
+
 void	dijkstra(t_s *s, t_room *neibr, t_list **arr, int j)
 {
+	t_list	**room;
 	double	tmp;
 	double	curr_dist;
 
+	room = arr;
 	if (neibr->visited)
 		return ;
-	tmp = pow((double)(s->map.start->x - neibr->x), 2.) +
-		pow((double)(s->map.start->y - neibr->y), 2.);
-	curr_dist = s->map.start->min_dist + sqrt(tmp);
-	if (neibr->min_dist > curr_dist)
+	tmp = pow((double)(((t_room*)(room[j]->next->content))->x - neibr->x), 2.) +
+		pow((double)(((t_room*)(room[j]->next->content))->y - neibr->y), 2.);
+	curr_dist = ((t_room*)(room[j]->next->content))->min_dist + sqrt(tmp);
+	if (!ft_strcmp(neibr->name, s->map.end->name))
 	{
-		if (neibr->min_dist < INF)
-			search_and_delete_way(s, neibr, arr, j);
-		neibr->min_dist = curr_dist;
+		add_elem(s->way_to_end, ft_itoa(j), (void*)&curr_dist, sizeof(int));
+		s->end_links--;
 	}
 	else
-		ft_lstdel((void*)arr[j], delete_tlist_node);
+	{
+		if (neibr->min_dist > curr_dist)
+		{
+			if (neibr->min_dist < INF)
+			search_and_delete_way(s, neibr, room, j);
+			neibr->min_dist = curr_dist;
+		}
+		else
+		ft_lstdel((void*)room[j], delete_tlist_node);
+	}
 }

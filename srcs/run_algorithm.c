@@ -6,7 +6,7 @@
 /*   By: dmulish <dmulish@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/23 12:02:27 by dmulish           #+#    #+#             */
-/*   Updated: 2017/10/24 21:15:56 by dmulish          ###   ########.fr       */
+/*   Updated: 2017/10/25 13:37:32 by dmulish          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,15 @@ void	search_way_to_end(t_s *s, t_list **arr, int *i)
 	t_room	*room;
 
 	j = -1;
-	while (arr[++j])
+	while (++j <= s->map.num_links)
 	{
+		if (!s->end_links)
+			return ;
+		if (j == s->map.num_links)
+			j = 0;
 		num = 0;
+		if (!arr[j])
+			continue ;
 		room = (t_room*)get_elem(s->all_rooms,
 			((t_room*)(arr[j]->content))->name);
 		tmp = room->links;
@@ -68,20 +74,28 @@ void	start_way(t_s *s, t_list **arr, int *i)
 void	run_algorithm(t_s *s)
 {
 	int		i;
+	t_list	*tmp;
 	t_list	**arr;
 
 	i = -1;
+	s->way_to_end = new_hash_map(0);
 	arr = (t_list**)ft_memalloc(sizeof(t_list*) * (size_t)s->map.num_links);
 	start_way(s, arr, &i);
 	search_way_to_end(s, arr, &i);
 	i = -1;
 	while (++i < s->map.num_links)
 	{
-		if (arr[i])
+		ft_putnbr(i);
+		ft_putstr(": ");
+		// tmp = reverse_list(arr[i]);
+		tmp = arr[i];
+		while (tmp)
 		{
-			ft_putnbr(i);
-			ft_putstr(": ");
-			print_list(reverse_list(((t_room*)(arr[i]->content))->links));
+			ft_putstr(((t_room*)tmp->content)->name);
+			ft_putstr(" -> ");
+			tmp = tmp->next;
 		}
+		ft_putstr("NULL");
+		ft_putchar('\n');
 	}
 }

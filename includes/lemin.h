@@ -6,14 +6,14 @@
 /*   By: dmulish <dmulish@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/12 16:57:18 by dmulish           #+#    #+#             */
-/*   Updated: 2017/10/24 20:31:28 by dmulish          ###   ########.fr       */
+/*   Updated: 2017/10/25 11:56:54 by dmulish          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef _LEMIN_H
 # define _LEMIN_H
 
-# define INF 3037000500.
+# define INF 4000000000.
 
 # include "../libft/libft.h"
 # include <stdlib.h>
@@ -44,8 +44,10 @@ typedef struct		s_s
 {
 	t_list			*rooms_names;
 	t_hash			*all_rooms;
+	t_hash			*way_to_end;
 	t_map			map;
 	char			*buf;
+	int				end_links;
 	int				end_fl;
 	int				start_fl;
 }					t_s;

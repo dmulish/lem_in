@@ -6,7 +6,7 @@
 #    By: dmulish <dmulish@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/10/12 16:58:59 by dmulish           #+#    #+#              #
-#    Updated: 2017/10/24 12:34:11 by dmulish          ###   ########.fr        #
+#    Updated: 2017/10/26 17:11:45 by dmulish          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ SRCS = srcs/main.c				\
 	   srcs/check_links.c		\
 	   srcs/check_rooms.c		\
 	   srcs/run_algorithm.c		\
+	   srcs/search_way_to_end.c	\
 
 BINS = $(SRCS:.c=.o)
 

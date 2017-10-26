@@ -6,7 +6,7 @@
 /*   By: dmulish <dmulish@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/12 16:51:05 by dmulish           #+#    #+#             */
-/*   Updated: 2017/10/25 11:57:11 by dmulish          ###   ########.fr       */
+/*   Updated: 2017/10/26 19:16:13 by dmulish          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 // free s->map.start/s->map.end
 // free array of t_list* !
 // improve hash-function
-// if no links - break
 
 void	error_manag(void)
 {
@@ -30,7 +29,6 @@ void	init_str(t_s *s)
 	s->buf = 0;
 	s->end_fl = 0;
 	s->start_fl = 0;
-	s->end_links = 0;
 	s->map.file = NULL;
 	s->map.num_links = 0;
 	s->rooms_names = NULL;

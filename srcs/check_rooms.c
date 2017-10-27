@@ -6,7 +6,7 @@
 /*   By: dmulish <dmulish@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/13 19:37:42 by dmulish           #+#    #+#             */
-/*   Updated: 2017/10/24 20:51:41 by dmulish          ###   ########.fr       */
+/*   Updated: 2017/10/27 19:36:21 by dmulish          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ void			new_room(t_s *s, int start, int end)
 	char	**arr;
 	t_room	*new_room;
 
+	(start > 1 || end > 1) ? error_manag() : 0;
 	arr = ft_strsplit(s->buf, ' ');
 	valid_room(arr, s->buf);
 	new_room = (t_room*)malloc(sizeof(t_room));
@@ -112,7 +113,6 @@ void			check_rooms(t_s *s)
 			ft_memdel((void**)&s->buf);
 			continue ;
 		}
-		(start > 1 || end > 1) ? error_manag() : 0;
 		if (ft_wordnum(s->buf, '-') == 2)
 			return ;
 		(ft_charnum(s->buf, ' ') != 2) ? error_manag() : 0;

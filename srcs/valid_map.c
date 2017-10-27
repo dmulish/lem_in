@@ -6,7 +6,7 @@
 /*   By: dmulish <dmulish@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/13 15:48:15 by dmulish           #+#    #+#             */
-/*   Updated: 2017/10/24 21:02:47 by dmulish          ###   ########.fr       */
+/*   Updated: 2017/10/28 01:08:10 by dmulish          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,6 @@ void		valid_map(t_s *s)
 	check_rooms(s);
 	(s->start_fl != 1 || s->end_fl != 1) ? error_manag() : 0;
 	check_links(s);
+	print_rev_list(s->map.file);
+	ft_putchar('\n');
 }

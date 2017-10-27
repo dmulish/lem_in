@@ -6,7 +6,7 @@
 /*   By: dmulish <dmulish@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/17 19:24:23 by dmulish           #+#    #+#             */
-/*   Updated: 2017/10/26 18:17:23 by dmulish          ###   ########.fr       */
+/*   Updated: 2017/10/27 20:28:46 by dmulish          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static char	**valid_links(char *str)
 	return (arr);
 }
 
-static void	do_it(t_room *room, char *str)
+static void	do_it1(t_room *room, char *str)
 {
 	if (room->links == NULL)
 		room->links = ft_lstnew((void*)str, ft_strlen(str) + 1);
@@ -65,8 +65,8 @@ static void	put_links_in_hash(t_s *s)
 	room2 = (t_room*)get_elem(s->all_rooms, arr[1]);
 	if (room1 == NULL || room2 == NULL)
 		error_manag();
-	do_it(room1, arr[1]);
-	do_it(room2, arr[0]);
+	do_it1(room1, arr[1]);
+	do_it1(room2, arr[0]);
 	s->map.num_links++;
 	ft_free_arr(arr);
 	ft_memdel((void**)&s->buf);

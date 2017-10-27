@@ -6,7 +6,7 @@
 #    By: dmulish <dmulish@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/10/12 16:58:59 by dmulish           #+#    #+#              #
-#    Updated: 2017/10/26 17:11:45 by dmulish          ###   ########.fr        #
+#    Updated: 2017/10/27 21:41:03 by dmulish          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,8 +17,10 @@ FLAGS = -Wall -Wextra -Werror -I includes/ -g
 LIB = libft/libft.a
 
 SRCS = srcs/main.c				\
+	   srcs/do_it.c				\
 	   srcs/dijkstra.c			\
 	   srcs/valid_map.c			\
+	   srcs/print_ways.c		\
 	   srcs/check_links.c		\
 	   srcs/check_rooms.c		\
 	   srcs/run_algorithm.c		\

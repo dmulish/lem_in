@@ -6,17 +6,11 @@
 /*   By: dmulish <dmulish@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/12 16:51:05 by dmulish           #+#    #+#             */
-/*   Updated: 2017/10/26 19:16:13 by dmulish          ###   ########.fr       */
+/*   Updated: 2017/10/28 01:08:32 by dmulish          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lemin.h"
-
-// some leaks in print_list/ft_lstdel /ft_lstdel do not work (?)/
-// same coord need to be checked
-// free s->map.start/s->map.end
-// free array of t_list* !
-// improve hash-function
 
 void	error_manag(void)
 {
@@ -40,12 +34,8 @@ int		main(void)
 
 	init_str(&s);
 	valid_map(&s);
-	// print_hash(s.all_rooms);
-	// ft_putchar('\n');
-	// print_list(s.all_rooms->all_index);
-	print_rev_list(s.map.file);
-	ft_putchar('\n');
 	ft_lstdel(&(s.map.file), delete_tlist_node);
 	run_algorithm(&s);
+	while(1);
 	return (0);
 }

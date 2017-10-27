@@ -6,7 +6,7 @@
 /*   By: dmulish <dmulish@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/24 11:10:02 by dmulish           #+#    #+#             */
-/*   Updated: 2017/10/24 19:02:12 by dmulish          ###   ########.fr       */
+/*   Updated: 2017/10/27 11:54:01 by dmulish          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,7 @@ t_list	*cpy_list_without_last(t_list *old)
 			ft_lstadd(&new, ft_lstnew(tmp->content, tmp->content_size));
 		tmp = tmp->next;
 	}
-	reverse_list(new);
-	return (new);
+	return (reverse_list(new));
 }
 
 t_list	*cpy_list(t_list *old)

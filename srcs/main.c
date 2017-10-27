@@ -6,7 +6,7 @@
 /*   By: dmulish <dmulish@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/12 16:51:05 by dmulish           #+#    #+#             */
-/*   Updated: 2017/10/28 01:08:32 by dmulish          ###   ########.fr       */
+/*   Updated: 2017/10/28 01:21:11 by vrybalko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,5 @@ int		main(void)
 	valid_map(&s);
 	ft_lstdel(&(s.map.file), delete_tlist_node);
 	run_algorithm(&s);
-	while(1);
 	return (0);
 }

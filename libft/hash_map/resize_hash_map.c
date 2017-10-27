@@ -6,7 +6,7 @@
 /*   By: dmulish <dmulish@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/16 19:43:07 by dmulish           #+#    #+#             */
-/*   Updated: 2017/10/16 20:01:10 by dmulish          ###   ########.fr       */
+/*   Updated: 2017/10/28 02:16:21 by vrybalko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ static void	delete_node(void *data, size_t data_size)
 	ft_memdel(&data);
 }
 
-void		free_hash_map(t_hash *h)
+void		free_hash_map(t_hash *h, void (*del)(void*, size_t))
 {
 	int	i;
 
 	i = -1;
 	while (++i < (int)h->bucket_num)
-		ft_lstdel(&(h->map[i]), delete_node);
+		ft_lstdel(&(h->map[i]), del);
 	ft_memdel((void**)&h->map);
 	ft_memdel((void**)&h);
 }

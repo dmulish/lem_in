@@ -6,7 +6,7 @@
 /*   By: dmulish <dmulish@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/27 21:37:43 by dmulish           #+#    #+#             */
-/*   Updated: 2017/10/28 01:02:30 by dmulish          ###   ########.fr       */
+/*   Updated: 2017/10/28 01:31:40 by vrybalko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,15 @@ int		room_num(t_list *lst)
 	return (res);
 }
 
-char	**list_to_arr(t_list *lst, char **arr)
+char	**list_to_arr(t_list *lst, int num_rooms)
 {
 	int		i;
 	t_list	*tmp;
+	char	**arr;
 
 	i = -1;
 	lst = reverse_list(lst);
+	arr = (char**)malloc(sizeof(char*) * (num_rooms));
 	tmp = lst->next;
 	while (tmp)
 	{
@@ -48,13 +50,10 @@ void	print_ways(t_s *s, t_list *way, int num_rooms)
 {
 	int		i;
 	int		j;
-	int		*ants;
 	char	**rooms;
 
 	i = 0;
-	rooms = (char**)malloc(sizeof(char*) * (num_rooms + 1));
-	ants = (int*)ft_memalloc(s->map.ant);
-	rooms = list_to_arr(way, rooms);
+	rooms = list_to_arr(way, num_rooms);
 	while (++i <= num_rooms + s->map.ant - 1)
 	{
 		j = -1;
@@ -70,4 +69,5 @@ void	print_ways(t_s *s, t_list *way, int num_rooms)
 			}
 		}
 	}
+	ft_memdel((void**)&rooms);
 }

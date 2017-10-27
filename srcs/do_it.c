@@ -6,7 +6,7 @@
 /*   By: dmulish <dmulish@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/27 20:27:26 by dmulish           #+#    #+#             */
-/*   Updated: 2017/10/27 20:27:35 by dmulish          ###   ########.fr       */
+/*   Updated: 2017/10/28 01:51:20 by vrybalko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ void		do_it(t_s *s, t_list **arr, int *j, int *i)
 			func(s, arr, neibr, j);
 		else
 		{
+			ft_lstdel(&arr[++(*i)], delete_tlist_node);
 			arr[++(*i)] = cpy_list_without_last(arr[*j]);
 			func(s, arr, neibr, i);
 		}

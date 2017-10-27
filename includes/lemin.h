@@ -6,7 +6,7 @@
 /*   By: dmulish <dmulish@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/12 16:57:18 by dmulish           #+#    #+#             */
-/*   Updated: 2017/10/28 01:05:37 by dmulish          ###   ########.fr       */
+/*   Updated: 2017/10/28 01:58:22 by vrybalko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ typedef struct		s_s
 
 int					room_num(t_list *lst);
 int					num_in_arr(t_list **arr, int size);
+void				clean_up(t_s *s, t_list **arr);
 
 void				error_manag(void);
 void				valid_map(t_s *s);

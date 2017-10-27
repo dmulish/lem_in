@@ -6,7 +6,7 @@
 /*   By: dmulish <dmulish@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/24 12:33:02 by dmulish           #+#    #+#             */
-/*   Updated: 2017/10/27 19:38:47 by dmulish          ###   ########.fr       */
+/*   Updated: 2017/10/28 01:26:04 by vrybalko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void	dijkstra(t_s *s, t_room *neibr, t_list **arr, int j)
 	t_list	*room;
 	double	tmp;
 	double	curr_dist;
+	char	*s_j;
 
 	room = arr[j];
 	if (neibr->visited)
@@ -48,8 +49,9 @@ void	dijkstra(t_s *s, t_room *neibr, t_list **arr, int j)
 	tmp = pow((double)(((t_room*)(room->next->content))->x - neibr->x), 2.) +
 		pow((double)(((t_room*)(room->next->content))->y - neibr->y), 2.);
 	curr_dist = ((t_room*)(room->next->content))->min_dist + sqrt(tmp);
+	s_j = ft_itoa(j);
 	if (!ft_strcmp(neibr->name, s->map.end->name))
-		add_elem(s->way_to_end, ft_itoa(j), (void*)&curr_dist, sizeof(double));
+		add_elem(s->way_to_end, s_j, (void*)&curr_dist, sizeof(double));
 	else
 	{
 		if (neibr->min_dist > curr_dist)
@@ -60,4 +62,5 @@ void	dijkstra(t_s *s, t_room *neibr, t_list **arr, int j)
 			((t_room*)arr[j]->content)->min_dist = curr_dist;
 		}
 	}
+	ft_memdel((void**)&s_j);
 }

@@ -6,7 +6,7 @@
 /*   By: dmulish <dmulish@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/17 19:24:23 by dmulish           #+#    #+#             */
-/*   Updated: 2017/10/27 20:28:46 by dmulish          ###   ########.fr       */
+/*   Updated: 2017/10/28 01:23:16 by vrybalko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ void		check_links(t_s *s)
 		}
 		put_links_in_hash(s);
 	}
+	ft_memdel((void**)&s->buf);
 	s->map.start->links = ((t_room*)(get_elem(s->all_rooms,
 		s->map.start->name)))->links;
 	s->map.end->links = ((t_room*)(get_elem(s->all_rooms,

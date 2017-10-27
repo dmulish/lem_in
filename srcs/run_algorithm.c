@@ -6,7 +6,7 @@
 /*   By: dmulish <dmulish@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/23 12:02:27 by dmulish           #+#    #+#             */
-/*   Updated: 2017/10/28 01:07:05 by dmulish          ###   ########.fr       */
+/*   Updated: 2017/10/28 01:58:00 by vrybalko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ static void	check_if_end(t_s *s, t_list **arr)
 	}
 }
 
+
 int			find_ways(t_s *s)
 {
 	int		i;
@@ -103,4 +104,5 @@ void		run_algorithm(t_s *s)
 	check_if_end(s, arr);
 	my_way = find_ways(s);
 	print_ways(s, arr[my_way], room_num(arr[my_way]));
+	clean_up(s, arr);
 }

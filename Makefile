@@ -6,18 +6,19 @@
 #    By: dmulish <dmulish@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/10/12 16:58:59 by dmulish           #+#    #+#              #
-#    Updated: 2017/10/27 21:41:03 by dmulish          ###   ########.fr        #
+#    Updated: 2017/10/28 02:04:30 by vrybalko         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = lem-in
 
-FLAGS = -Wall -Wextra -Werror -I includes/ -g
+FLAGS = -Wall -Wextra -Werror -I includes/ -g -lm
 
 LIB = libft/libft.a
 
 SRCS = srcs/main.c				\
 	   srcs/do_it.c				\
+	   srcs/clean_up.c			\
 	   srcs/dijkstra.c			\
 	   srcs/valid_map.c			\
 	   srcs/print_ways.c		\
